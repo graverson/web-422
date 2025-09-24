@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Задачи на числа</title>
+</head>
+<body>
+  <h2>Задачи с тремя числами</h2>
+  
+  <label>Число 1: <input type="number" id="num1"></label><br><br>
+  <label>Число 2: <input type="number" id="num2"></label><br><br>
+  <label>Число 3: <input type="number" id="num3"></label><br><br>
+  
+  <button onclick="findMax()">Найти наибольшее число</button>
+  <p id="result1"></p>
+  
+  <button onclick="findMaxSum()">Найти два числа с наибольшей суммой</button>
+  <p id="result2"></p>
+  
+  <script>
+    function findMax() {
+      let a = Number(document.getElementById("num1").value);
+      let b = Number(document.getElementById("num2").value);
+      let c = Number(document.getElementById("num3").value);
+      
+      let maxNum = Math.max(a, b, c);
+      document.getElementById("result1").textContent = "Наибольшее число: " + maxNum;
+    }
+    
+    function findMaxSum() {
+      let a = Number(document.getElementById("num1").value);
+      let b = Number(document.getElementById("num2").value);
+      let c = Number(document.getElementById("num3").value);
+      
+      // считаем суммы попарно
+      let sumAB = a + b;
+      let sumAC = a + c;
+      let sumBC = b + c;
+      
+      let maxSum = Math.max(sumAB, sumAC, sumBC);
+      let pair = "";
+      
+      if (maxSum === sumAB) {
+        pair = a + " и " + b;
+      } else if (maxSum === sumAC) {
+        pair = a + " и " + c;
+      } else {
+        pair = b + " и " + c;
+      }
+      
+      document.getElementById("result2").textContent = "Наибольшая сумма у чисел: " + pair + " (сумма = " + maxSum + ")";
+    }
+  </script>
+</body>
+</html>
