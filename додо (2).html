@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodo заказы</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff8e1;
+    }
+    input {
+      padding: 5px;
+      width: 200px;
+    }
+    button {
+      padding: 6px 12px;
+      background: orange;
+      border: none;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li.done {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h2>🍕 Dodo заказы</h2>
+
+  <input id="name" type="text" placeholder="Введите пиццу">
+  <button onclick="addPizza()">Добавить</button>
+
+  <h3>Список заказов:</h3>
+  <ul id="orders">
+    <li>4 сезона <input type="checkbox" onchange="toggleDone(this)"></li>
+  </ul>
+
+  <script>
+    function addPizza() {
+      let input = document.getElementById("name");
+      let text = input.value.trim();
+      if (text) {
+        let li = document.createElement("li");
+        li.innerHTML = text + ' <input type="checkbox" onchange="toggleDone(this)">';
+        document.getElementById("orders").appendChild(li);
+        input.value = "";
+      }
+    }
+
+    function toggleDone(checkbox) {
+      checkbox.parentElement.classList.toggle("done", checkbox.checked);
+    }
+  </script>
+</body>
+</html>
