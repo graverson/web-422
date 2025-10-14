@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Итальянские звери</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background: linear-gradient(135deg, #fff0f5, #cce5ff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #ff7fa0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4f84;
+        }
+
+        .box {
+            width: 260px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            transition: 0.5s;
+        }
+
+        .counter {
+            margin-top: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <p>🇮🇹 Итальянские звери</p>
+    <button id="MagicButton">ТРА-ЛА-ЛА!</button>
+    <div id="box" class="box">Нажми, чтобы увидеть зверя!</div>
+    <div class="counter">Количество нажатий: <span id="count">0</span></div>
+
+    <script>
+        const button = document.getElementById('MagicButton');
+        const box = document.getElementById('box');
+        const counter = document.getElementById('count');
+        let clicks = 0;
+
+        const animals = [
+            { name: "🐘 Кокофанто элефанто", phrase: "Траля-ля, тра-ла-ла!", color: "#f6b6c3" },
+            { name: "🐳 Бомбардиро крокодило", phrase: "Мамма мия!", color: "#87ceeb" },
+            { name: "🐒 Бобрито", phrase: "Ой-йой-йой!", color: "#ffd166" },
+            { name: "🐙 Сатурнита", phrase: "Оооо, соль миио!", color: "#a2d2ff" },
+            { name: "🐔 Сахурчик", phrase: "Тунг-тунг-тунг, сахур!", color: "#ffcc99" },
+            { name: "🦦 БР БР ПАТАПИМ", phrase: "С новым годом!", color: "#dab6fc" },
+            { name: "🦩 Балерина Капучино", phrase: "Капучино аморе!", color: "#f77fff" },
+        ];
+
+        button.addEventListener('click', () => {
+            clicks++;
+            counter.textContent = clicks;
+            const animal = animals[clicks % animals.length];
+            box.style.backgroundColor = animal.color;
+            box.innerHTML = `<div>${animal.name}</div><div style="font-size:0.9em;">${animal.phrase}</div>`;
+        });
+    </script>
+</body>
+</html>
